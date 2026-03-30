@@ -31,6 +31,8 @@ pd_df =my_dataframe.to_pandas()
 st.dataframe(pd_df)
 st.stop()
 
+search_on =pd_loc[pd_df['FRUIT_NAME'] ==fruit_chosen, 'SEARCH_ON'].iloc[0]
+
 ingredients_list =st.multiselect(
     'Choose up to five ingredients:',
     my_dataframe,
@@ -53,14 +55,15 @@ if ingredients_list:
                  values ('""" + ingredients_string + """','""" + name_on_order + """')"""
 
     st.write(my_insert_stmt)
-    st.stop() #great for troubleshooting
+    #st.stop() #great for troubleshooting
     
     time_to_insert= st.button('Submit Order')
 
     if time_to_insert:
         session.sql(my_insert_stmt).collect() 
             
-    #     st.success('Your Smoothie is ordered! ', icon="✅")
+        st.success('Your Smoothie is ordered! ', icon="✅")
+      
 import requests
 smoothiefroot_response = requests.get("https://my.smoothiefroot.com/api/fruit/watermelon")
 sf_df= st.dataframe(data=smoothiefroot_response.json(), use_container_width =True)
