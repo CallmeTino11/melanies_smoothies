@@ -16,7 +16,7 @@ st.write('The name on your Smoothie will be:', name_on_order)
 
 pd_df =my_dataframe.to_pandas()
 st.dataframe(pd_df)
-#st.stop()
+st.stop()
 
 ingredients_list =st.multiselect(
     'Choose up to five ingredients:',
