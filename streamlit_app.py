@@ -32,6 +32,7 @@ if my_dataframe:
                         , [when_matched().update({'ORDER_FILLED': edited_dataset['ORDER_FILLED']})]
                     )
             st.success('Order(s) Updated!',icon = "👍" )
+            sf_df= st.dataframe(data=smoothiefroot_response.json(), use_container_width =True)
         except:
             st.write("Something went wrong.")
 else: 
